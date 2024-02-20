@@ -13,14 +13,32 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Center(
-        child: Container(
-          color: const Color.fromARGB(255, 255, 255, 255),
-          padding: const EdgeInsets.all(20),
-          child: Column(children: [
-            Container(),
-            Container(),
-          ]),
+      home: Scaffold(
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        body: Center(
+          child: Column(
+            children: [
+              TextField(
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Email',
+                ),
+              ),
+              const SizedBox(height: 20),
+              TextField(
+                obscureText: true,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Password',
+                ),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {},
+                child: const Text('Login'),
+              ),
+            ],
+          ),
         ),
       ),
     );
