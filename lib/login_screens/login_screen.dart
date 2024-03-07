@@ -18,24 +18,45 @@ class _MyAppState extends State<MyApp> {
         body: Center(
           child: Column(
             children: [
-              TextField(
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Email',
+              Container(
+                margin: const EdgeInsets.all(20),
+                child: Image.asset(
+                  'assets/rocket.png',
+                  width: 200,
+                  height: 200,
+                  fit: BoxFit.cover,
+                ).animate(
+                  onPlay: (controller) => controller.repeat(),
                 ),
               ),
-              const SizedBox(height: 20),
-              TextField(
-                obscureText: true,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Password',
-                ),
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {},
-                child: const Text('Login'),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const TextField(
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Email',
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  const TextField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Password',
+                      suffixIcon: Icon(Icons.remove_red_eye),
+                      suffixIconColor: Color.fromARGB(255, 0, 0, 0),
+                      filled: true,
+                      fillColor: Color.fromARGB(255, 255, 255, 255),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Text('Login'),
+                  ),
+                ],
               ),
             ],
           ),
