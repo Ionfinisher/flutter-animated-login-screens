@@ -37,6 +37,10 @@ class _MyAppState extends State<MyApp> {
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Email',
+                      suffixIcon: Icon(Icons.mail),
+                      suffixIconColor: Color.fromARGB(255, 0, 0, 0),
+                      filled: true,
+                      fillColor: Color.fromARGB(255, 255, 255, 255),
                     ),
                   ),
                   const SizedBox(height: 20),
