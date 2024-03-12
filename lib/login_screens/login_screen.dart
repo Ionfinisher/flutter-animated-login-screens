@@ -58,6 +58,10 @@ class _MyAppState extends State<MyApp> {
                   const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+                      foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+                    ),
                     child: const Text('Login'),
                   ),
                 ],
