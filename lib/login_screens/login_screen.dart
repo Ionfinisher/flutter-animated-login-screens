@@ -25,9 +25,15 @@ class _MyAppState extends State<MyApp> {
                   width: 200,
                   height: 200,
                   fit: BoxFit.cover,
-                ).animate(
-                  onPlay: (controller) => controller.repeat(),
-                ),
+                )
+                    .animate(
+                      onPlay: (controller) => controller.repeat(),
+                    )
+                    .moveY(
+                      duration: 1000.ms,
+                      begin: 0,
+                      end: -100,
+                    ),
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
