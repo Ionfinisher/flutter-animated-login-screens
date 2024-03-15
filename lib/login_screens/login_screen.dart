@@ -17,6 +17,20 @@ class _MyAppState extends State<MyApp> {
 // password visibility toggling
   bool passToggle = true;
 
+// email validation method
+  String? validateEmail(String? email) {
+    bool isEmailValid = RegExp(
+            r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
+        .hasMatch(email!);
+
+    if (email.isEmpty) {
+      return "Enter an email";
+    }
+    if (!isEmailValid) {
+      return "Enter a valid Email";
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -43,19 +57,8 @@ class _MyAppState extends State<MyApp> {
                     keyboardType: TextInputType.emailAddress,
                     controller: emailController,
                     // better way is to create a validayor class
-                    validator: (value) {
-                      bool emailValid = RegExp(
-                              r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
-                          .hasMatch(value!);
-
-                      if (value.isEmpty) {
-                        return "Enter an email";
-                      }
-
-                      if (!emailValid) {
-                        return "Enter a valid Email";
-                      }
-                    },
+                    validator: validateEmail,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     // end of validator here
                     decoration: InputDecoration(
                       labelText: "Email",
