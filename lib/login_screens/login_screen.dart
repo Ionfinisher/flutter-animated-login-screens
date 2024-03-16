@@ -17,6 +17,9 @@ class _MyAppState extends State<MyApp> {
 // password visibility toggling
   bool passToggle = true;
 
+// animtion trigger
+  bool isWrong = false;
+
 // email validation method
   String? validateEmail(String? email) {
     bool isEmailValid = RegExp(
@@ -24,9 +27,15 @@ class _MyAppState extends State<MyApp> {
         .hasMatch(email!);
 
     if (email.isEmpty) {
+      setState(() {
+        isWrong = true;
+      });
       return "Enter an email";
     }
     if (!isEmailValid) {
+      setState(() {
+        isWrong = true;
+      });
       return "Enter a valid Email";
     }
   }
@@ -51,7 +60,19 @@ class _MyAppState extends State<MyApp> {
                     width: 200,
                     height: 200,
                     fit: BoxFit.cover,
-                  ),
+                  )
+                      .animate(
+                        target: isWrong ? 1 : 0,
+                      )
+                      .moveY(
+                        duration: 1000.ms,
+                        begin: 0,
+                        end: -100,
+                      )
+                      .shimmer(
+                        duration: 500.ms,
+                        color: Color.fromARGB(255, 101, 251, 15),
+                      ),
                   const SizedBox(height: 50),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
